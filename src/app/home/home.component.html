@@ -1,0 +1,71 @@
+<!-- <p>home works!</p>
+<pre > {{(result|async)|json}} </pre>
+
+<mat-grid-list cols="2" rowHeight="1:0.8">
+    <ng-container >
+        <mat-grid-tile *ngFor="let data of tes">
+            <mat-card class="example-card" >
+                <mat-card-header>
+                  <div mat-card-avatar class="example-header-image"></div>
+                  <mat-card-title>{{data.owner.firstName}} {{data.owner.lastName}}</mat-card-title>
+                  <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                  <p>
+                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                    A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                    bred for hunting.
+                  </p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-button>LIKED</button>
+                  <button mat-button>SHARE</button>
+                </mat-card-actions>
+              </mat-card>
+        </mat-grid-tile>
+    </ng-container>
+</mat-grid-list> -->
+
+
+
+<div class="content">
+  <mat-chip-list aria-label="Fish selection" >
+    <mat-chip color="primary" *ngFor="let tag of tes" (click)="selectTag(tag)">
+
+      {{tag}}
+    </mat-chip>
+  </mat-chip-list>
+  <br>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let data of obs | async">
+        <mat-card class="mat-elevation-z4" >
+          <mat-card-header>
+            <mat-card-title>{{data.owner.firstName}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+          <mat-card-content>
+            <mat-chip-list aria-label="Fish selection" >
+              <mat-chip color="primary" *ngFor="let postTag of data.tags" (click)="selectTag(postTag)">
+                {{postTag}}
+              </mat-chip>
+            </mat-chip-list>
+            <p>
+              <!-- {{data.text}} -->
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+    </div>
+
+    <mat-paginator 
+      [length] = 'len'
+      [hidePageSize] = true
+      [pageSizeOptions]="[5]" 
+      (page)="pageEvents($event)">
+    </mat-paginator>
