@@ -6,8 +6,9 @@ import { Post } from '../post.model';
 
 
 const BASE_URL = 'https://dummyapi.io/data/api/';
-const APP_ID = '6006dc7c501ed662007e8cfd';
-
+// const APP_ID = '6006dc7c501ed662007e8cfd'; //iie7
+// const APP_ID = '5fc0a77b1399640b5f7dfb8d'; //luki
+const APP_ID = '6007eeb50e158289d88e4fac'; //student
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +27,7 @@ export class ApiService {
     // we are calling .get() method over this.http object
     // this .get() method takes URL to call API
 
-    return this.http.get(BASE_URL+'post?page='+num+'&limit=1', { headers: { 'app-id': APP_ID } })
+    return this.http.get(BASE_URL+'post?page='+num+'&limit=6', { headers: { 'app-id': APP_ID } })
     .pipe(
       map((res: any) =>{
         console.log(res.data)
@@ -36,10 +37,7 @@ export class ApiService {
   }
 
   getTag(): Observable<any> {
-    console.log('Request is sent!');
-    // this.http is a HttpClient library provide by @angular/common
-    // we are calling .get() method over this.http object
-    // this .get() method takes URL to call API
+    console.log('getTag() is sent!');
 
     return this.http.get(BASE_URL+'tag', { headers: { 'app-id': APP_ID } })
     .pipe(
@@ -50,13 +48,10 @@ export class ApiService {
     );
   }
 
-  getCustomTag(key: string): Observable<any> {
-    console.log('Request is sent!');
-    // this.http is a HttpClient library provide by @angular/common
-    // we are calling .get() method over this.http object
-    // this .get() method takes URL to call API
+  getCustomTag(key: string, num: number): Observable<any> {
+    console.log('getCustomTag() is sent!');
 
-    return this.http.get(BASE_URL+'tag/'+key+'/post', { headers: { 'app-id': APP_ID } })
+    return this.http.get(BASE_URL+'tag/'+key+'/post?page='+num+'&limit=6', { headers: { 'app-id': APP_ID } })
     .pipe(
       map((res: any) =>{
         console.log(res.data)
@@ -64,6 +59,17 @@ export class ApiService {
       })
     );
   }
+  
+  getComment(key: string): Observable<any> {
+    console.log('getComment() is sent!');
 
+    return this.http.get(BASE_URL+'post/'+key+'/comment', { headers: { 'app-id': APP_ID } })
+    .pipe(
+      map((res: any) =>{
+        console.log(res.data)
+        return res.data
+      })
+    );
+  }
 }
 

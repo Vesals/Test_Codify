@@ -17,13 +17,19 @@ import {MatCardModule} from '@angular/material/card';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatDividerModule} from '@angular/material/divider';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PostComponent } from './home/post/post.component';
+import { TagComponent } from './tag/tag.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    PostComponent,
+    TagComponent
   ],
   imports: [
     BrowserModule, 
@@ -37,7 +43,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatPaginatorModule,
     MatGridListModule,
     FlexLayoutModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDividerModule
 
   ],
   providers: [ApiService],

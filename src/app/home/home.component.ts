@@ -22,21 +22,18 @@ export class HomeComponent implements OnInit {
   constructor(
     private apiSrv: ApiService,
     private changeDetectorRef: ChangeDetectorRef,
-    ) {
-}
+    ) {}
 
   ngOnInit() {
-    this.apiSrv.getTag().subscribe(res => {
-      this.tes = res;
-      console.log('hehe');
-      console.log(res);
-    });
+    // this.apiSrv.getTag().subscribe(res => {
+    //   this.tes = res;
+    //   console.log('hehe');
+    //   console.log(res);
+    // });
 
     this.changeDetectorRef.detectChanges();
 
     this.apiSrv.resolveItems(this.idx).subscribe(result => {
-      // this.tes = result;
-      
       this.len = 999;
 
       this.dataSource = new MatTableDataSource<any>(result);      
@@ -44,32 +41,18 @@ export class HomeComponent implements OnInit {
       this.obs = this.dataSource.connect();
       
       console.log(this.obs)
-      // return this.tes;
     });
   }
 
-  selectTag(inp: string){
-    console.log(inp)
-    this.apiSrv.getCustomTag(inp).subscribe(res => {
-      this.len = 999;
-      console.log('here'+res.length)
-
-      this.dataSource = new MatTableDataSource<any>(res);      
-      this.dataSource.paginator = this.paginator;
-      this.obs = this.dataSource.connect();
-      
-      console.log(this.obs)
-      // return this.tes;
-    });
-  }
 
   pageEvents(event: any) {
     if(event.pageIndex > this.idx) {
       console.log('next')
+      console.log('pageIdx = ' + event.pageIndex)
+      console.log('idx = ' + this.idx)
       this.idx = event.pageIndex;
       this.apiSrv.resolveItems(this.idx).subscribe(result => {
-        // this.len = 999;
-        
+    
         this.dataSource = new MatTableDataSource<any>(result);   
         console.log('here')
         
@@ -82,10 +65,10 @@ export class HomeComponent implements OnInit {
 
     } else {
       console.log('prev')
+      console.log('pageIdx = ' + event.pageIndex)
+      console.log('idx = ' + this.idx)
       this.idx--;
       this.apiSrv.resolveItems(this.idx).subscribe(result => {
-        // this.len = 999;
-        
         this.dataSource = new MatTableDataSource<any>(result);   
         console.log('here')
         

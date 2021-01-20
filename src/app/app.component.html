@@ -2,13 +2,15 @@
   <mat-toolbar color="primary">
     <span>Dummy API</span>
     <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon search-icon" routerLink="/tag">
+      <mat-icon>search</mat-icon>
+    </button>
     <button mat-icon-button class="example-icon home-icon" routerLinkActive="active" routerLink="/home">
       <mat-icon>home</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon favorite-icon" routerLink="/profile">
-      <mat-icon>favorite</mat-icon>
+    <button mat-icon-button class="example-icon account_circle-icon" routerLink="/profile">
+      <mat-icon>account_circle</mat-icon>
     </button>
-
   </mat-toolbar>
   <router-outlet></router-outlet>
 </p>

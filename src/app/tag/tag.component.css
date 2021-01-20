@@ -20,3 +20,8 @@
 ::ng-deep .mat-paginator-range-label{
     display: none !important;
 }
+
+.tes{
+    margin: 0;
+    padding: 0;
+}
