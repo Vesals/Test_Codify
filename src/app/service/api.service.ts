@@ -8,7 +8,7 @@ import { Post } from '../post.model';
 const BASE_URL = 'https://dummyapi.io/data/api/';
 // const APP_ID = '6006dc7c501ed662007e8cfd'; //iie7
 // const APP_ID = '5fc0a77b1399640b5f7dfb8d'; //luki
-const APP_ID = '6007eeb50e158289d88e4fac'; //student
+const APP_ID = '600841784ee95daafa093f73'; //student
 @Injectable({
   providedIn: 'root'
 })
@@ -64,6 +64,18 @@ export class ApiService {
     console.log('getComment() is sent!');
 
     return this.http.get(BASE_URL+'post/'+key+'/comment', { headers: { 'app-id': APP_ID } })
+    .pipe(
+      map((res: any) =>{
+        console.log(res.data)
+        return res.data
+      })
+    );
+  }
+
+  getProfile(): Observable<any> {
+    console.log('getProfile() is sent!');
+
+    return this.http.get(BASE_URL+'user?limit=5', { headers: { 'app-id': APP_ID } })
     .pipe(
       map((res: any) =>{
         console.log(res.data)

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { ApiService } from '../service/api.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  profile: any[];
 
-  constructor() { }
+  constructor(
+    private apiSrv: ApiService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private router: Router
+    ) {}
 
   ngOnInit(): void {
+
+    this.changeDetectorRef.detectChanges();
+    this.apiSrv.getProfile().subscribe(res => {
+      this.profile = res;
+    });
   }
+
+  viewMore(key: string){
+    console.log(key)
+    this.router.navigate(['/profile/detail', { id: key } ]);
+  }  
 
 }

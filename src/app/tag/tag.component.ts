@@ -33,11 +33,15 @@ export class TagComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    
     this.changeDetectorRef.detectChanges();
     this.apiSrv.getTag().subscribe(res => {
       this.tag = res;
     });
+
+    if(localStorage.getItem('tagParam') != null){
+      this.selectTag(localStorage.getItem('tagParam'))
+      localStorage.clear()
+    }
   }
 
   
@@ -119,7 +123,7 @@ export class TagComponent implements OnInit {
     }
  }
 
-  ngOnDestroy(){
-    this.dataSource.disconnect();
-   }
+  // ngOnDestroy(){
+  //   this.dataSource.disconnect();
+  //  }
 }

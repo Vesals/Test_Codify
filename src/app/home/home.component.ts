@@ -3,8 +3,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { ApiService } from '../service/api.service'
-import {MatChipsModule} from '@angular/material/chips';
-import { Post } from '../post.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +21,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private apiSrv: ApiService,
     private changeDetectorRef: ChangeDetectorRef,
+    private router: Router
     ) {}
 
   ngOnInit() {
@@ -44,7 +44,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
+  selectTag(postTag: string){
+    localStorage.setItem('tagParam', postTag);
+    this.router.navigate(['/tag']);
+  }
   pageEvents(event: any) {
     if(event.pageIndex > this.idx) {
       console.log('next')

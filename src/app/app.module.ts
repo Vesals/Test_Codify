@@ -20,16 +20,17 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatDividerModule} from '@angular/material/divider';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { PostComponent } from './home/post/post.component';
 import { TagComponent } from './tag/tag.component';
+import { ProfileDetailComponent } from './profile/profile-detail/profile-detail.component';
+import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ProfileComponent,
-    PostComponent,
-    TagComponent
+    // ProfileComponent,
+    TagComponent,
+    // ProfileDetailComponent
   ],
   imports: [
     BrowserModule, 
@@ -44,7 +45,8 @@ import { TagComponent } from './tag/tag.component';
     MatGridListModule,
     FlexLayoutModule,
     MatChipsModule,
-    MatDividerModule
+    MatDividerModule,
+    // ProfileModule
 
   ],
   providers: [ApiService],

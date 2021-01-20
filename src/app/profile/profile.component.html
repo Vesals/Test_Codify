@@ -1,1 +1,18 @@
-<p>profile works!</p>
+<div class="content">
+    <br>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let data of profile">
+        <mat-card class="mat-elevation-z4 ">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image" style="background-image: url({{data.picture}})" ></div>
+            <mat-card-title> {{data.title | titlecase}} {{data.firstName}} {{data.lastName}}</mat-card-title>
+            <mat-card-subtitle> {{data.email}} </mat-card-subtitle>
+        </mat-card-header>
+
+        <button mat-icon-button right (click)="viewMore(data.id)">
+            View More <!-- <mat-icon>share</mat-icon> -->
+        </button>
+        </mat-card>
+    </div>
+    </div>
+</div>

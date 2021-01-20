@@ -1,4 +1,6 @@
+
 <div class="content">
+  <h1 class="center">Choose Tag</h1>
     <mat-chip-list aria-label="Fish selection" >
         <mat-chip color="primary" *ngFor="let tag of tag" (click)="selectTag(tag)">
             {{tag}}
@@ -10,11 +12,12 @@
         <mat-card class="mat-elevation-z4">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image" style="background-image: url({{data.owner.picture}})" ></div>
-            <mat-card-title>{{data.owner.firstName}} {{data.owner.lastName}}</mat-card-title>
-            <mat-card-subtitle>Liked by {{data.likes}} people</mat-card-subtitle>
+            <mat-card-title>{{data.owner.firstName}} {{data.owner.lastName}} </mat-card-title>
+            <mat-card-subtitle> Liked by {{data.likes}} people </mat-card-subtitle>
           </mat-card-header>
           <img mat-card-image class="img" src='{{data.image}}'>
           <mat-card-content>
+            <mat-card-subtitle> <b> {{data.publishDate |  date:'EEEE, MMMM d, y'}} </b> </mat-card-subtitle>
             <p>
               {{data.text}}
             </p>
@@ -30,8 +33,14 @@
                   <mat-card-header>
                     <div mat-card-avatar class="example-header-image" style="background-image: url({{cm.owner.picture}})" ></div>
                     <mat-card-title>{{cm.owner.firstName}} {{cm.owner.lastName}}</mat-card-title>
-                    <mat-card-subtitle> {{cm.message}} </mat-card-subtitle>
+                    <mat-card-subtitle> <b> {{cm.publishDate |  date:'EEEE, MMMM d, y'}} </b> </mat-card-subtitle>
+                    <!-- <mat-card-subtitle>  </mat-card-subtitle> -->
                   </mat-card-header>
+                  <mat-card-content>
+                    <p>
+                      {{cm.message}}
+                    </p>
+                  </mat-card-content>
                 </mat-card>
               </div>
               <p style="text-align: center;" *ngIf="comment.length == 0">No Comments</p>

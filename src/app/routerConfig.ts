@@ -1,24 +1,23 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
 import { TagComponent } from './tag/tag.component';
 
 const appRoutes: Routes = [
   { 
-    path: 'home', 
-    component: HomeComponent 
-  },
-  
-  { 
     path: '',   
-    redirectTo: '/home', 
+    redirectTo: 'home', 
     pathMatch: 'full' 
   }, 
 
   { 
-    path: 'profile', 
-    component: ProfileComponent 
+    path: 'home', 
+    component: HomeComponent 
   },
+
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
+   },
 
   { 
     path: 'tag', 

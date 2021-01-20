@@ -1,0 +1,43 @@
+.content {
+    padding: 16px;
+}
+.img {
+    max-height: 250px;
+
+}
+.content > mat-card {
+    width: 200px;
+}
+
+.example-header-image {
+    background-size: cover;
+  }
+
+::ng-deep .mat-paginator-page-size{
+    display: none !important;
+}
+
+::ng-deep .mat-paginator-range-label{
+    display: none !important;
+}
+
+.right {
+    justify-content: flex-end;
+}
+
+.align-right{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-container {
+    /*  not needed styles to reflect it */ 
+    background: blue;
+    padding: 10px;
+    color: white;
+    width: 500px;
+  
+    /* needed styles below */
+    display: flex;
+    justify-content: space-between;
+  }
