@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
 
   viewMore(key: string){
     console.log(key)
-    this.router.navigate(['/profile/detail', { id: key } ]);
+    this.router.navigate(['/profile/detail', key ]);
   }  
 
 }
