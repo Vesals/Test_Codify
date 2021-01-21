@@ -8,10 +8,13 @@
             <mat-card-title> {{data.title | titlecase}} {{data.firstName}} {{data.lastName}}</mat-card-title>
             <mat-card-subtitle> {{data.email}} </mat-card-subtitle>
         </mat-card-header>
-
-        <button mat-icon-button right (click)="viewMore(data.id)">
-            View More <!-- <mat-icon>share</mat-icon> -->
+        <button mat-button (click)="viewMore(data.id)">
+            View Profile <!-- <mat-icon>share</mat-icon> -->
         </button>
+        <button mat-button (click)="viewPost(data.id)">
+            View Post <!-- <mat-icon>share</mat-icon> -->
+        </button>
+        
         </mat-card>
     </div>
     </div>

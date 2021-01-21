@@ -14,8 +14,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ProfilePostComponent } from './profile-post/profile-post.component';
 
 const routes: Routes = [
   // { 
@@ -36,6 +38,10 @@ const routes: Routes = [
     path: 'detail/:id',
     component: ProfileDetailComponent
  },
+ {
+  path: 'post/:id',
+  component: ProfilePostComponent
+ },
 ];
 
 
@@ -43,6 +49,7 @@ const routes: Routes = [
   declarations: [
     ProfileComponent,
     ProfileDetailComponent,
+    ProfilePostComponent,
   ],
   imports: [
     CommonModule,
@@ -55,6 +62,7 @@ const routes: Routes = [
     FlexLayoutModule,
     MatChipsModule,
     MatDividerModule,
+    MatProgressSpinnerModule,
     RouterModule.forChild(routes)
   ],
   exports: [RouterModule]

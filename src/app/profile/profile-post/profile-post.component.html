@@ -1,0 +1,33 @@
+<div class="content">
+
+    <br>
+      <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let data of obs | async">
+          <mat-card class="mat-elevation-z4">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image" style="background-image: url({{data.owner.picture}})" ></div>
+              <mat-card-title>{{data.owner.firstName}} {{data.owner.lastName}}</mat-card-title>
+              <mat-card-subtitle>Liked by {{data.likes}} people</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image class="img" src='{{data.image}}'>
+            <mat-card-content>
+              <p>
+                {{data.text}}
+              </p>
+            </mat-card-content>
+            <mat-chip-list aria-label="Fish selection" >
+              <mat-chip color="primary" *ngFor="let postTag of data.tags" >
+                {{postTag}}
+              </mat-chip>
+            </mat-chip-list>
+          </mat-card>
+        </div>
+      </div>
+      </div>
+  
+      <mat-paginator 
+        [length] = 'len'
+        [hidePageSize] = true
+        [pageSizeOptions]="[6]" 
+        (page)="pageEvents($event)">
+      </mat-paginator>

@@ -1,0 +1,22 @@
+.content {
+    padding: 16px;
+}
+.img {
+    max-height: 250px;
+
+}
+.content > mat-card {
+    width: 200px;
+}
+
+.example-header-image {
+    background-size: cover;
+  }
+
+::ng-deep .mat-paginator-page-size{
+    display: none !important;
+}
+
+::ng-deep .mat-paginator-range-label{
+    display: none !important;
+}

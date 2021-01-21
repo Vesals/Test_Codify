@@ -8,7 +8,7 @@ import { Post } from '../post.model';
 const BASE_URL = 'https://dummyapi.io/data/api/';
 // const APP_ID = '6006dc7c501ed662007e8cfd'; //iie7
 // const APP_ID = '5fc0a77b1399640b5f7dfb8d'; //luki
-const APP_ID = '600841784ee95daafa093f73'; //student
+const APP_ID = '600841784ee95daafa093f73'; //gmail
 @Injectable({
   providedIn: 'root'
 })
@@ -76,6 +76,27 @@ export class ApiService {
     console.log('getProfile() is sent!');
 
     return this.http.get(BASE_URL+'user?limit=5', { headers: { 'app-id': APP_ID } })
+    .pipe(
+      map((res: any) =>{
+        console.log(res.data)
+        return res.data
+      })
+    );
+  }
+
+  getProfileDetail(key: string) {
+    console.log('getProfileDetail() is sent!');
+
+    return this.http.get(BASE_URL+'user/'+key, { headers: { 'app-id': APP_ID } });
+  }
+
+  getProfilePost(key: string, num: number): Observable<any> {
+    console.log('getProfilePost() is sent!');
+    // this.http is a HttpClient library provide by @angular/common
+    // we are calling .get() method over this.http object
+    // this .get() method takes URL to call API
+
+    return this.http.get(BASE_URL+'user/'+key+'/post?page='+num+'&limit=6', { headers: { 'app-id': APP_ID } })
     .pipe(
       map((res: any) =>{
         console.log(res.data)

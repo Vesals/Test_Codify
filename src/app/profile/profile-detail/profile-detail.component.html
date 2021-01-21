@@ -1,1 +1,32 @@
-<p>profile-detail works!</p>
+<div fxLayout="row wrap" fxLayoutGap="16px grid" style="justify-content: center;" *ngIf="!showContent">
+    <mat-spinner ></mat-spinner>
+</div>
+
+<div class="content" *ngIf="showContent">
+    <br>
+    
+    <div fxLayout="row wrap" fxLayoutGap="16px grid" style="justify-content: center;">
+    <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%" >
+        <mat-card class="mat-elevation-z4 " >
+        <mat-card-header style="justify-content: center;">
+            <!-- <div mat-card-avatar class="example-header-image" style="background-image: url({{profile.picture}})" ></div> -->
+            <mat-card-title> {{profile.title | titlecase}}. {{profile.firstName}} {{profile.lastName}}</mat-card-title>
+            <mat-card-subtitle> {{profile.email}} </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image class="img" src='{{profile.picture}}'>
+          <mat-card-content>
+              <h3><b>Gender:</b> {{profile.gender | titlecase}}</h3>
+              <h3><b>Date of Birth:</b> {{profile.dateOfBirth |  date:'MMMM d, y'}}</h3>
+              <h3><b>Registration Date:</b> {{profile.registerDate | date:'EEEE, MMMM d, y' }}</h3>
+              <h3><b>Phone Number:</b> {{profile.phone}}</h3>
+              <h3><b>Location:</b> {{profile.location.street}} {{profile.location.city}} {{profile.location.state}} {{profile.location.country}}</h3>
+          </mat-card-content>
+          
+<!-- 
+        <button mat-icon-button right (click)="viewMore(profile.id)">
+            View More <mat-icon>share</mat-icon> 
+        </button> -->
+        </mat-card>
+    </div>
+    </div>
+</div>

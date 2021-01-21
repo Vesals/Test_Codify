@@ -29,4 +29,9 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/profile/detail', key ]);
   }  
 
+  viewPost(key: string){
+    console.log(key)
+    this.router.navigate(['/profile/post', key ]);
+  }  
+
 }
